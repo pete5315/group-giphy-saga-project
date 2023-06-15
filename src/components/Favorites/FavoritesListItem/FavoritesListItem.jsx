@@ -3,6 +3,7 @@ function FavoritesListItem(){
     return(
         <div>
             Favorites List Item!
+            Hello!
         </div>
     )
 }
