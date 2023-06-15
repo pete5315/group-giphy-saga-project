@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,14 +13,14 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+
 
 function Header() {
   const history = useHistory();
   const [state, setState] = React.useState({
     top: false,
   });
-
   const toggleDrawer = (open) => (event) => {
     if (
       event.type === "keydown" &&
@@ -41,7 +41,7 @@ function Header() {
     >
       <List>
         {[
-          ["Search", "/"],
+          ["Search", ""],
           ["Favorites", "favorites"],
         ].map((text, index) => (
           <ListItem key={text[0]} disablePadding>
