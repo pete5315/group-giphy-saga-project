@@ -8,7 +8,7 @@ import { HashRouter as Router, Route } from "react-router-dom";
 function App(props) {
   return (
     <div>
-      <Header/>
+      {/* <Header/> */}
       <Router>
       <Route exact path="/">
       <SearchView/>

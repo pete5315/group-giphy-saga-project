@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux'
 function FavoritesList(){
 
     const favReducer = useSelector(store => store.favsList)
-    const disPatch = useDispatch();
+    const dispatch = useDispatch();
     useEffect(() => {
         dispatch({
             type: 'GET_FAV'
