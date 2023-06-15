@@ -6,7 +6,7 @@ function SearchList(){
 
     const gifList = useSelector(store=>store.gifList);
     console.log('OUR GIF LIST =>>>>>',gifList);
-if(gifList.length >0)
+    
     return(
         <div>
             SearchList
