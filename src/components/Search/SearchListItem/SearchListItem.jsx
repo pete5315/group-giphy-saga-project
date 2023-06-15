@@ -16,7 +16,7 @@ function SearchListItem({gif}) {
 
     return (
         <div key={gif.id}>
-            <img src={gif.url}/>
+            <img src={gif.images.original.url}/>
             <button onClick={postGif}>Favorite</button>
             <input onChange={(event)=> setCategory(event.target.value)}/>
         </div>

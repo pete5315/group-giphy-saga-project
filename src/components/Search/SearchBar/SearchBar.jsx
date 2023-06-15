@@ -5,12 +5,14 @@ function SearchBar(){
     const dispatch = useDispatch();
     const [searchQuery, setSearchQuery] = useState('');
 
-    const submitSearch = (value)=>{
-        dispatch({type: 'GET_GIFS', payload: value})
+    const submitSearch = ()=>{
+        dispatch({type: 'GET_GIFS', payload: searchQuery})
     }
+    
     return(
         <div>
-            <form onSubmit={()=>submitSearch(searchQuery)}>
+            <h1>searchbar</h1>
+            <form onSubmit={submitSearch}>
                 <input onChange={(e)=>setSearchQuery(e.target.value)}/>
                 <button type="submit">Submit</button>
             </form>
