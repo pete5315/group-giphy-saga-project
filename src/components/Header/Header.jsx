@@ -16,7 +16,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 function Header() {
-  // const history = useHistory();
+  const history = useHistory();
   const [state, setState] = React.useState({
     top: false,
   });
@@ -58,7 +58,6 @@ function Header() {
       </List>
     </Box>
   );
-
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
