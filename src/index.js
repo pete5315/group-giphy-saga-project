@@ -4,9 +4,25 @@ import App from './components/App/App';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
-import logger from'redux-logger';
+import {takeLatest, put} from 'redux-saga/effects'
 
 
+function* rootSaga() {
+    yield takeLatest('GET_GIFS', fetchGifs)
+}
+
+function* fetchGifs(action) {
+    try {
+        console.log('first saga recieved action');
+        const gifResponse = yield axios.get('/api/search', action.payload);
+        yield put({
+            type: 'ADD_GIF',
+            payload: gifResponse.data
+        })
+    } catch (error) {
+        console.log('error GETting gifs', error );
+    }
+}
 
 
 
@@ -35,7 +51,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
     combineReducers({gifList}),
-    applyMiddleware(sagaMiddleware, logger)
+    applyMiddleware(sagaMiddleware)
 )
 sagaMiddleware.run(rootSaga)
 
