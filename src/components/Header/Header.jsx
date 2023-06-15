@@ -11,13 +11,11 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import { Link, useHistory } from "react-router-dom";
-
+import SearchIcon from '@mui/icons-material/Search';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Link } from "react-router-dom";
 
 function Header() {
-  const history = useHistory();
   const [state, setState] = React.useState({
     top: false,
   });
@@ -45,14 +43,14 @@ function Header() {
           ["Favorites", "favorites"],
         ].map((text, index) => (
           <ListItem key={text[0]} disablePadding>
-            <ListItemButton 
-              // onClick={() => history.push(`/` + text[1])}
-            >
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text[0]} />
-            </ListItemButton>
+            <Link to={text[1]} style={{ textDecoration: 'none', color: "black"}}>
+              <ListItemButton>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <SearchIcon /> : <FavoriteIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text[0]} />
+              </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>
