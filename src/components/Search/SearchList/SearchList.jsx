@@ -1,11 +1,17 @@
 import SearchListItem from "../SearchListItem/SearchListItem";
+import { useSelector } from 'react-redux';
 
 function SearchList(){
+
+    const gifList = useSelector(store=>store.gifList);
 
     return(
         <div>
             SearchList
-            <SearchListItem/>
+            {gifList.map(gif=>(
+                <SearchListItem gif={gif}/>
+            ))}
+            
         </div>
     )
 }
