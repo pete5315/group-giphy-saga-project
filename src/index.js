@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/App/App';
@@ -10,6 +11,7 @@ import axios from 'axios';
 
 function* rootSaga() {
     yield takeLatest('GET_GIFS', fetchGifs)
+    yield takeLatest('GET_FAV', fetchFav)
 }
 
 function* fetchGifs(action) {
@@ -25,10 +27,29 @@ function* fetchGifs(action) {
     }
 }
 
+function* fetchFav() {
+
+    try {
+        const favResponse = yield axios.get('/api/favorite')
+        yield put ({
+            type: 'ADD_FAV',
+            payload: favResponse.data
+        })
+    } catch(err) {
+        console.log('Error with favsGET', err)
+    }
+}
 
 
 
-
+const favsList = (state = [], action) => {
+    switch (action.type) {
+        case 'ADD_FAV':
+            return action.payload;
+        default:
+            return state;
+    }
+    }
 
 
 
@@ -51,7 +72,7 @@ const gifList = (state = [], action) => {
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-    combineReducers({gifList}),
+    combineReducers({gifList, favsList}),
     applyMiddleware(sagaMiddleware)
 )
 sagaMiddleware.run(rootSaga)
