@@ -1,10 +1,11 @@
 import FavoritesListItem from "../FavoritesListItem/FavoritesListItem";
 import {useSelector, useDispatch} from 'react-redux'
+import { useEffect } from "react";
 
 function FavoritesList(){
 
     const favReducer = useSelector(store => store.favsList)
-    const disPatch = useDispatch();
+    const dispatch = useDispatch();
     useEffect(() => {
         dispatch({
             type: 'GET_FAV'
@@ -15,9 +16,9 @@ function FavoritesList(){
         <div>
             <h2> Gifstagram Favorites List</h2>
             <div>
-                {favReducer.map((favItem) => (
+                {/* {favReducer.map((favItem) => (
                      <FavoritesListItem key = {favItem.id} favItem = {favItem}/>
-                ))}
+                ))} */}
            
             </div>
         </div>
