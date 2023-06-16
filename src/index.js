@@ -13,6 +13,7 @@ function* rootSaga() {
     yield takeLatest('GET_GIFS', fetchGifs)
     yield takeLatest('GET_FAV', fetchFav)
     yield takeLatest('POST_GIF', postFavs)
+    yield takeLatest ('GET_CAT', fetchCat)
 }
 
 function* fetchGifs(action) {
@@ -41,10 +42,18 @@ function* fetchFav() {
     }
 }
 
-// function* fetchCat() {
+function* fetchCat() {
 
-//     try 
-// }
+    try {
+        const catResponse = yield axios.get('/api/category')
+        yield put({
+            type:'ADD_CAT',
+            payload: catResponse.data
+        })
+    } catch(error) {
+        console.log('Error with Catergory GET', error)
+    }
+}
 
 
 const favsList = (state = [], action) => {
