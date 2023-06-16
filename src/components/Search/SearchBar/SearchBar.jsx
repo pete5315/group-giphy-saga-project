@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Button, Input } from "@mui/material";
 
 function SearchBar(){
     const dispatch = useDispatch();
@@ -13,8 +14,8 @@ function SearchBar(){
         <div>
             <h1>searchbar</h1>
             <form onSubmit={submitSearch}>
-                <input onChange={(e)=>setSearchQuery(e.target.value)}/>
-                <button type="submit">Submit</button>
+                <Input onChange={(e)=>setSearchQuery(e.target.value)}/>
+                <Button variant="contained" type="submit">Submit</Button>
             </form>
         </div>
     )
