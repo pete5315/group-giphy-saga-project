@@ -9,7 +9,8 @@ router.get('/', (req, res) => {
 
   pool.query(queryText)
     .then(result=>{
-      res.send(result.rows)
+      res.send(result.rows);
+      console.log('GET WORKS!!!');
     }).catch(error=>{
       console.log('problems in the GET', error);
       res.sendStatus(500)
