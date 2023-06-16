@@ -18,15 +18,16 @@ router.get('/', (req, res) => {
 
 // add a new favorite
 router.post('/', (req, res) => {
-  const queryText = `INSERT INTO favorites (name, fav_type, url, rating, category-ID)
-                     ($1, $2, $3, $4, $5)`;
+  const queryText = `INSERT INTO favorites (name, fav_type, url, rating, category_ID)
+                     VALUES ($1, $2, $3, $4, $5)`;
   console.log('REQ.BODY!!!!!',req.body);
-  pool.query(queryText, [req.body])
+  pool.query(queryText, [req.body.name, req.body.fav_type, req.body.url, req.body.rating, req.body.category_id])
     .then(result=>{
-      res.sendStatus(200)
+      console.log('THE POST WORKS!!');
+      res.sendStatus(200);
     }).catch(error=>{
       console.log('problems in the favList POST=>',error);
-      res.sendStatus(500)
+      res.sendStatus(500);
     })
 
 });
