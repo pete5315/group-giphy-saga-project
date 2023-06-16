@@ -1,9 +1,7 @@
 
-function FavoritesListItem(){
+function FavoritesListItem({favItem}){
     return(
-        <div>
-            Favorites List Item!
-        </div>
+        <img src={favItem.url}/>
     )
 }
 
