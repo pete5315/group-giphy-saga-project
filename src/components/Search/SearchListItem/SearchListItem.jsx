@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 function SearchListItem({gif}) {
     const dispatch = useDispatch();
     const [category, setCategory] = useState('');
+    
     const postGif = () =>{
         dispatch({type: 'POST_GIF', payload: {
             name: gif.name,
@@ -18,7 +19,12 @@ function SearchListItem({gif}) {
         <div key={gif.id}>
             <img src={gif.images.original.url}/>
             <button onClick={postGif}>Favorite</button>
-            <input onChange={(event)=> setCategory(event.target.value)}/>
+            <input 
+            min={0}
+            max={10}
+            type="number"
+            onChange={(event)=> setCategory(event.target.value)}
+            />
         </div>
 
     )

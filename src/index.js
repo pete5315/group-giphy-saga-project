@@ -12,6 +12,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeLatest('GET_GIFS', fetchGifs)
     yield takeLatest('GET_FAV', fetchFav)
+    yield takeLatest('POST_GIF', postFavs)
 }
 
 function* fetchGifs(action) {
@@ -53,6 +54,15 @@ const favsList = (state = [], action) => {
         default:
             return state;
     }
+    }
+    
+    function* postFavs(action) {
+        try {
+            yield axios.post('/api/favorite', action.payload)
+            
+        } catch (error) {
+            console.log('error POSTing', error);
+        }
     }
 
 
