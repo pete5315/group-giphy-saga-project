@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 function SearchListItem({gif}) {
     const dispatch = useDispatch();
     const [category, setCategory] = useState('');
+    
     const postGif = () =>{
         dispatch({type: 'POST_GIF', payload: {
             name: gif.name,
