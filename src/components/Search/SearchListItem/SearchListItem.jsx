@@ -7,10 +7,11 @@ function SearchListItem({gif}) {
     
     const postGif = () =>{
         dispatch({type: 'POST_GIF', payload: {
-            name: gif.name,
-            fav_type: gif.fav,
-            url: gif.url,
-            category
+            name: gif.title,
+            fav_type: 'cohort',
+            url: gif.images.original.url,
+            rating:Number(category),
+            category_id: 3
         }})
     }
 
