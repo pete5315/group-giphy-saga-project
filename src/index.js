@@ -40,6 +40,10 @@ function* fetchFav() {
     }
 }
 
+// function* fetchCat() {
+
+//     try 
+// }
 
 
 const favsList = (state = [], action) => {
